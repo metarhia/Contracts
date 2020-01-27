@@ -1,7 +1,7 @@
 # Task definition file
 
 - Task files are JavaScript files containing object expression `({ });`
-- Don't use `'use strict';` in task files, tasks are alwais in strict mode
+- Don't use `'use strict';` in task files, tasks are always in strict mode
 - Tasks are placed in `application/tasks`
 - Task fields:
   - `caption`
