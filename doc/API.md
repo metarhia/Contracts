@@ -6,9 +6,10 @@
   - Synchronous function returning `Promise`
 - Accepts named arguments in destructuring syntax
 `({ arg1, arg2, ...rest }) => {}`
-- Optionally use `guard` to validate arguments and results:
-`arg1 = guard(arg1, definition)`
 - Throw errors or call `reject` in promise
+- Extended function declatation includes optional elements: parameters and
+results schema, imperative parameter and result validation functions, execution
+timeout.
 
 ## API methods different contracts
 
@@ -47,21 +48,41 @@ async ({ id, object }) => {
 });
 ```
 
-## Function with guards
+## Extended function declaration
 
-Use guards optionally. You can apply guard for one or a few arguments. You can
-apply it multiple times for one argument for complex checking or for combination
-of multiple arguments.
+Declaration elements (fields):
+- `parameters` (optional) parameters declarative schema
+- `validate` (optional) parameters imperative validation function
+- `timeout` (optional) execution timeout in milliseconds
+- `method` sync or async lambda implementing method
+- `returns` (optional) returning value declarative schema
+- `assert` (optional) returning value imperative assertion function
 
 ```js
-async ({ name, city, age }) => {
-  name = guard(name, { type: 'string', default: 'Marcus' });
-  city = guard(city, { type: 'string', default: 'Roma' });
-  age = guard(age, { type: 'number', required: true });
+({
+  parameters: {
+    a: { type: 'number' },
+    b: { type: 'number' },
+  },
 
-  const result = { name, city, born: age + 121 };
+  validate: ({ a, b }) => {
+    if (a % 3 === 0) throw new Error('Expected `a` to be multiple of 3');
+    if (b % 5 === 0) throw new Error('Expected `b` to be multiple of 5');
+  },
 
-  guard(result.born, { type: 'number', required: true });
-  return result;
-};
+  timeout: 1000,
+
+  method: async ({ a, b }) => {
+    const result = a + b;
+    return result;
+  },
+
+  returns: { type: 'number' },
+
+  assert: ({ a, b }, result) => {
+    if (result < a && result < b) {
+      throw new Error('Result expected to be greater than parameters');
+    }
+  },
+});
 ```
