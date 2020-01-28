@@ -51,12 +51,17 @@ async ({ id, object }) => {
 ## Extended function declaration
 
 Declaration elements (fields):
-- `parameters` (optional) parameters declarative schema
-- `validate` (optional) parameters imperative validation function
-- `timeout` (optional) execution timeout in milliseconds
-- `method` sync or async lambda implementing method
-- `returns` (optional) returning value declarative schema
-- `assert` (optional) returning value imperative assertion function
+- `caption` - method display name
+- `description` - method description
+- `parameters` (optional) - parameters declarative schema
+- `validate` (optional) - parameters imperative validation function
+- `timeout` (optional) - execution timeout in milliseconds
+- `method` - sync or async lambda implementing method
+- `returns` (optional) - returning value declarative schema
+- `assert` (optional) - returning value imperative assertion function
+- `examples` - array of examples
+- `example` - single example (shorthand)
+- `errors` - collection of possible error
 
 ```js
 ({
@@ -83,6 +88,120 @@ Declaration elements (fields):
     if (result < a && result < b) {
       throw new Error('Result expected to be greater than parameters');
     }
+  },
+});
+```
+
+## External schemas
+
+```js
+({
+  parameters: {
+    person: { domain: 'Person' },
+    address: { domain: 'Address' },
+  },
+
+  method: async ({ person, address }) => {
+    const addressId = await api.gs.create(address);
+    person.address = addressId;
+    const personId = await api.gs.create(person);
+    return personId;
+  },
+
+  returns: { type: 'number' },
+});
+```
+
+## Possible errors
+
+```js
+({
+  parameters: {
+    person: { domain: 'Person' },
+    address: { domain: 'Address' },
+  },
+
+  method: async ({ person, address }) => {
+    const addressId = await api.gs.create(address);
+    person.address = addressId;
+    const personId = await api.gs.create(person);
+    return personId;
+  },
+
+  returns: { type: 'number' },
+
+  errors: {
+    contract: 'Invalid arguments',
+    fail: 'Person and address can not be saved to database',
+    result: 'Invalid result',
+  },
+});
+```
+
+## Invocation example
+
+```js
+({
+  example: {
+    parameters: {
+      person: { name: 'Marcus', surname: 'Aurelius', born: 121 },
+      address: { country: 'Pax Romana', city: 'Roma' },
+    },
+    returns: { id: 10792532194309 },
+  },
+
+  method: async ({ person, address }) => {
+    const addressId = await api.gs.create(address);
+    person.address = addressId;
+    const personId = await api.gs.create(person);
+    return personId;
+  },
+});
+```
+
+## Multiple invocation examples
+
+```js
+({
+  examples: [
+    {
+      parameters: {
+        person: { name: 'Marcus', surname: 'Aurelius', born: 121 },
+        address: { country: 'Pax Romana', city: 'Roma' },
+      },
+      returns: { id: 10792532194309 },
+    },
+    {
+      parameters: {
+        person: { name: 'Antoninus', surname: 'Pius', born: 138 },
+        address: { country: 'Pax Romana', city: 'Roma' },
+      },
+      returns: { id: 10792532194308 },
+    },
+  ],
+
+  method: async ({ person, address }) => {
+    const addressId = await api.gs.create(address);
+    person.address = addressId;
+    const personId = await api.gs.create(person);
+    return personId;
+  },
+});
+```
+
+## Caption and description
+
+```js
+({
+  caption: 'Create person with address',
+
+  description: 'Store person and address to database with relation',
+
+  method: async ({ person, address }) => {
+    const addressId = await api.gs.create(address);
+    person.address = addressId;
+    const personId = await api.gs.create(person);
+    return personId;
   },
 });
 ```
