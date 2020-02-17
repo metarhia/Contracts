@@ -57,18 +57,23 @@ async ({ id, object }) => {
 ## Extended function declaration
 
 Declaration elements (fields):
-- `caption` (optional) - method display name;
-- `description` (optional) - method description;
-- `access` (optional, default: `logged`) - method access definition;
-- `parameters` (optional) - parameters declarative schema;
-- `validate` (optional) - parameters imperative validation function;
-- `timeout` (optional) - execution timeout in milliseconds;
-- `method` - async/await or promise-returning function;
-- `returns` (optional) - returning value declarative schema;
-- `assert` (optional) - returning value imperative assertion function;
-- `examples` (optional) - array of examples;
-- `example` (optional) - single example (shorthand);
-- `errors` (optional) - collection of possible error;
+- `caption: string` (optional) - method display name;
+- `description: string` (optional) - method description;
+- `access: string` (optional, default: `logged`) - method access definition;
+- `parameters: Schema` (optional) - parameters declarative schema;
+- `validate: function` (optional) - parameters imperative validation function;
+- `timeout: number` (optional) - execution timeout in milliseconds;
+- `concurrency: number` (optional) - maximum number of concurrent requests;
+- `sirializer: string` (optional, default: `json`) - serialization format;
+- `protocols: Array<string>` (optional, default: server default) - set `['http']`
+  to allow web hooks, (allowed values: `http`, `https`, `ws`, `wss`);
+- `deprecated: boolean` (optional) - deprecated methods marked with `true`;
+- `method: function` - async/await or promise-returning function;
+- `returns: Schema` (optional) - returning value declarative schema;
+- `assert: function` (optional) - returning value imperative assertion function;
+- `examples: Array<object>` (optional) - array of examples;
+- `example: object` (optional) - single example (shorthand);
+- `errors: Array<object>` (optional) - collection of possible error;
 
 ```js
 ({
@@ -84,6 +89,8 @@ Declaration elements (fields):
   },
 
   timeout: 1000,
+  concurrency: 1,
+  sirializer: 'json',
 
   method: async ({ a, b }) => {
     const result = a + b;
