@@ -4,12 +4,21 @@
   - Asynchronous function in async/await syntax or
   - Synchronous function return value or
   - Synchronous function returning `Promise`
-- Accepts named arguments in destructuring syntax
+- Accepts named arguments in destructuring syntax:
 `({ arg1, arg2, ...rest }) => {}`
-- Throw errors or call `reject` in promise
+- Throw errors or call `reject` in promise.
 - Extended function declatation includes optional elements: parameters and
 results schema, imperative parameter and result validation functions, execution
 timeout.
+- Functions will access all other modules with `api` namespace, injected and
+frozen (not with `require`).
+- Function sandbox global context will be frozen to prevent global polution.
+- Other common namespaces:
+  - `console` will be wrapped (same interface, different implementation)
+  - `require` will be not be used (removed from function context)
+  - `global` will not be used (no more recursive `sandbox.global = global`)
+  - `module` and `exports` will be removed (do non't need imperative exports)
+  - timers (set and clear functions) will be available in global context
 
 ## API methods different contracts
 
