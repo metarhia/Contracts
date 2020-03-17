@@ -68,6 +68,7 @@ Declaration elements (fields):
   parameters: {
     a: { type: 'number' },
     b: { type: 'number' },
+    // or shorthand `a: 'number'`
   },
 
   validate: ({ a, b }) => {
@@ -148,6 +149,7 @@ Declaration elements (fields):
       address: { country: 'Pax Romana', city: 'Roma' },
     },
     returns: { id: 10792532194309 },
+    // or throws: 'Error message',
   },
 
   method: async ({ person, address }) => {
