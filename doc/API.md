@@ -7,7 +7,7 @@
 - Accepts named arguments in destructuring syntax:
 `({ arg1, arg2, ...rest }) => {}`
 - Throw errors or call `reject` in promise.
-- Extended function declatation includes optional elements: parameters and
+- Extended function declaration includes optional elements: parameters and
 results schema, imperative parameter and result validation functions, execution
 timeout.
 - Functions will access all other modules with `api` and `application`
