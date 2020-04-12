@@ -10,8 +10,9 @@
 - Extended function declatation includes optional elements: parameters and
 results schema, imperative parameter and result validation functions, execution
 timeout.
-- Functions will access all other modules with `api` namespace, injected and
-frozen (not with `require`).
+- Functions will access all other modules with `api` and `application`
+namespaces, injected (with sandboxing) and frozen.
+- Identifier `context` is injected with wrapper function (not sandboxing).
 - Function sandbox global context will be frozen to prevent global polution.
 - Other common namespaces:
   - `console` will be wrapped (same interface, different implementation)
