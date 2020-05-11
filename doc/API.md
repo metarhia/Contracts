@@ -2,7 +2,6 @@
 
 - Define API method as:
   - Asynchronous function in async/await syntax or
-  - Synchronous function return value or
   - Synchronous function returning `Promise`
 - Accepts named arguments in destructuring syntax:
 `({ arg1, arg2, ...rest }) => {}`
@@ -12,29 +11,23 @@ results schema, imperative parameter and result validation functions, execution
 timeout.
 - Functions will access all other modules with `api` and `application`
 namespaces, injected (with sandboxing) and frozen.
-- Identifier `context` is injected with wrapper function (not sandboxing).
+- Identifier `context` is injected with wrapper function (not sandboxed).
 - Function sandbox global context will be frozen to prevent global polution.
 - Other common namespaces:
   - `console` will be wrapped (same interface, different implementation)
-  - `require` will be not be used (removed from function context)
-  - `global` will not be used (no more recursive `sandbox.global = global`)
-  - `module` and `exports` will be removed (do non't need imperative exports)
+  - `require` will be removed (not included in sandbox context)
+  - `global` will not be used (no recursive `sandbox.global = global`)
+  - `module` and `exports` will be removed (don't need imperative exports)
   - timers (set and clear functions) will be available in global context
 
 ## API methods different contracts
 
-Pure synchronous function. Note: it's blocking, so you can use it just for
-retrieving data from memory structures with simple pre/post calculations.
-
+Simple example:
 ```js
-({ a, b }) => a + b;
+async ({ a, b }) => a + b;
 ```
 
-```js
-({ name, delta }) => application.counters[name] += delta;
-```
-
-Promise-returning synchronous function with revealing constructor
+Promise-returning function:
 ```js
 ({ id, object }) => new Promise((resolve, reject) => {
   readObject(id, (err, record) => {
@@ -48,7 +41,7 @@ Promise-returning synchronous function with revealing constructor
 });
 ```
 
-Asynchronous function in async/await syntax
+Asynchronous function in async/await syntax:
 ```js
 async ({ id, object }) => {
   const record = await readObject(id);
@@ -61,17 +54,17 @@ async ({ id, object }) => {
 ## Extended function declaration
 
 Declaration elements (fields):
-- `caption` - method display name
-- `description` - method description
+- `caption` (optional) - method display name
+- `description` (optional) - method description
 - `parameters` (optional) - parameters declarative schema
 - `validate` (optional) - parameters imperative validation function
 - `timeout` (optional) - execution timeout in milliseconds
-- `method` - sync or async lambda implementing method
+- `method` - async/await or promise-returning function
 - `returns` (optional) - returning value declarative schema
 - `assert` (optional) - returning value imperative assertion function
-- `examples` - array of examples
-- `example` - single example (shorthand)
-- `errors` - collection of possible error
+- `examples` (optional) - array of examples
+- `example` (optional) - single example (shorthand)
+- `errors` (optional) - collection of possible error
 
 ```js
 ({
