@@ -56,6 +56,7 @@ async ({ id, object }) => {
 Declaration elements (fields):
 - `caption` (optional) - method display name
 - `description` (optional) - method description
+- `access` (optional, default: `logged`) - method access definition
 - `parameters` (optional) - parameters declarative schema
 - `validate` (optional) - parameters imperative validation function
 - `timeout` (optional) - execution timeout in milliseconds
@@ -201,6 +202,28 @@ Declaration elements (fields):
   caption: 'Create person with address',
 
   description: 'Store person and address to database with relation',
+
+  method: async ({ person, address }) => {
+    const addressId = await api.gs.create(address);
+    person.address = addressId;
+    const personId = await api.gs.create(person);
+    return personId;
+  },
+});
+```
+
+## Method access definition
+
+Possible values:
+- `public` - authentication isn't required
+- `session` - allowed clients with started session (even anonymous)
+- `logged` - any authenticated user allowed
+- `{ group: 'name' }` - only group members allowed
+- `{ login: 'name' }` - only certain user allowed
+
+```js
+({
+  access: 'public',
 
   method: async ({ person, address }) => {
     const addressId = await api.gs.create(address);
