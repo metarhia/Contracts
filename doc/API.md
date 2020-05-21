@@ -9,16 +9,15 @@
 - Extended function declaration includes optional elements: parameters and
 results schema, imperative parameter and result validation functions, execution
 timeout.
-- Functions will access all other modules with `api` and `application`
-namespaces, injected (with sandboxing) and frozen.
-- Identifier `context` is injected with wrapper function (not sandboxed).
-- Function sandbox global context will be frozen to prevent global polution.
-- Other common namespaces:
-  - `console` will be wrapped (same interface, different implementation)
-  - `require` will be removed (not included in sandbox context)
-  - `global` will not be used (no recursive `sandbox.global = global`)
-  - `module` and `exports` will be removed (don't need imperative exports)
-  - timers (set and clear functions) will be available in global context
+- Functions may access other modules with `api`, `application`, `context`
+namespaces, injected to sandbox and frozen.
+- Global context in sandboxes is frozen to prevent global polution.
+- Other common namespaces (injected to sandbox):
+  - `console` - same interface as native `console` but different implementation;
+  - `require` - is restricted in sandbox (not accessible);
+  - `global` - is restricted  in sandbox;
+  - `module` and `exports` are restricted in sandbox;
+  - `timers` (set and clear functions) is available from sandbox global;
 
 ## API methods different contracts
 
@@ -54,18 +53,18 @@ async ({ id, object }) => {
 ## Extended function declaration
 
 Declaration elements (fields):
-- `caption` (optional) - method display name
-- `description` (optional) - method description
-- `access` (optional, default: `logged`) - method access definition
-- `parameters` (optional) - parameters declarative schema
-- `validate` (optional) - parameters imperative validation function
-- `timeout` (optional) - execution timeout in milliseconds
-- `method` - async/await or promise-returning function
-- `returns` (optional) - returning value declarative schema
-- `assert` (optional) - returning value imperative assertion function
-- `examples` (optional) - array of examples
-- `example` (optional) - single example (shorthand)
-- `errors` (optional) - collection of possible error
+- `caption` (optional) - method display name;
+- `description` (optional) - method description;
+- `access` (optional, default: `logged`) - method access definition;
+- `parameters` (optional) - parameters declarative schema;
+- `validate` (optional) - parameters imperative validation function;
+- `timeout` (optional) - execution timeout in milliseconds;
+- `method` - async/await or promise-returning function;
+- `returns` (optional) - returning value declarative schema;
+- `assert` (optional) - returning value imperative assertion function;
+- `examples` (optional) - array of examples;
+- `example` (optional) - single example (shorthand);
+- `errors` (optional) - collection of possible error;
 
 ```js
 ({
@@ -215,11 +214,11 @@ Declaration elements (fields):
 ## Method access definition
 
 Possible values:
-- `public` - authentication isn't required
-- `session` - allowed clients with started session (even anonymous)
-- `logged` - any authenticated user allowed
-- `{ group: 'name' }` - only group members allowed
-- `{ login: 'name' }` - only certain user allowed
+- `public` - authentication isn't required;
+- `session` - allowed clients with started session (anonymous as well);
+- `logged` - any authenticated user allowed;
+- `{ group: 'name' }` - only group members allowed;
+- `{ login: 'name' }` - only certain user allowed;
 
 ```js
 ({
