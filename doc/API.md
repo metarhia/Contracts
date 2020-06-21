@@ -9,15 +9,19 @@
 - Extended function declaration includes optional elements: parameters and
 results schema, imperative parameter and result validation functions, execution
 timeout.
-- Functions may access other modules with `api`, `application`, `context`
-namespaces, injected to sandbox and frozen.
+- Functions may access other modules with `api` and `application` namespaces,
+injected to sandbox and frozen.
 - Global context in sandboxes is frozen to prevent global polution.
+- Global context has no recursion (like `sandbox.global = sandbox`) so domain and
+api code can't access global context by identifier `global`.
 - Other common namespaces (injected to sandbox):
   - `console` - same interface as native `console` but different implementation;
+  - `setTimeout`, `setImmediate`, `setInterval`, `clearTimeout`,
+  `clearImmediate`, `clearInterval` are available from sandbox global;
+- Other common namespaces restricted in sandbox:
   - `require` - is restricted in sandbox (not accessible);
-  - `global` - is restricted  in sandbox;
+  - `global` - is restricted in sandbox;
   - `module` and `exports` are restricted in sandbox;
-  - `timers` (set and clear functions) is available from sandbox global;
 
 ## API methods different contracts
 
