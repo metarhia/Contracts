@@ -16,7 +16,7 @@ There are following packet types: `call`, `callback`, `event`, `stream`.
 
 ```js
 // Format:
-{"call":<Number>,"interface.version/method":{<arguments>}}
+{"call":<Number>,"interface.version/method":{<parameters>}}
 {"callback":<Number>,"result":<any>,"error":{"code":<Number>,"message":<String>}}
 
 // Example:
@@ -28,7 +28,7 @@ There are following packet types: `call`, `callback`, `event`, `stream`.
 
 ```js
 // Format:
-{"event":<Number>,"interface/event":{<arguments>}}
+{"event":<Number>,"interface/event":{<parameters>}}
 
 // Example:
 {"event":-25,"chat/message":{"from":"marcus","message":"Hello!"}}
