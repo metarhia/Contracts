@@ -4,3 +4,4 @@
 - [Application configuration](doc/Configuration.md)
 - [Database schema](doc/Schema.md)
 - [Task definition file](doc/Task.md)
+- [Metacom protocol](doc/Metacom.md)
