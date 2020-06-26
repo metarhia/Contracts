@@ -31,7 +31,7 @@ There are following packet types: `call`, `callback`, `event`, `stream`.
 {"event":<Number>,"interface/event":{<arguments>}}
 
 // Example:
-{"event":-25,"chat/message":{"from":"marcus",message:"Hello!"}}
+{"event":-25,"chat/message":{"from":"marcus","message":"Hello!"}}
 ```
 
 ## Streams
