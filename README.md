@@ -1,4 +1,4 @@
-# Contracts for core modules of Metarhia technology stack
+# Metarhia Technology Stack Core Contracts
 
 - [API function contract](doc/API.md)
 - [Application configuration](doc/Configuration.md)
