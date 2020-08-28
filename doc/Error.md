@@ -5,7 +5,7 @@ regular application behaviour that should not break execution sequence while
 exception breaks execution sequence (serving client-side request or certain
 asynchronous business-logic scenario).
 
-## Rerurn error from method
+## Return error from method
 
 ```js
 (async ({ ...args }) => {
@@ -31,8 +31,8 @@ Result with error (metacom packet):
 ## Rise exception
 
 - Application server will return HTTP 500 or abstract RPC error code.
-- Application server may tranfer exception over network without stack trace
-and sensitive error message (all this data will be logged instead).
+- Application server may transfer exceptions over the network without stack trace
+and sensitive error messages (all this data will be logged instead).
 
 ```js
 (async ({ ...args }) => {
