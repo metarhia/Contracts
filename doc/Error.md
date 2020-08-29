@@ -36,14 +36,14 @@ trace and sensitive error messages (all this data will be logged instead).
 });
 ```
 
-Result with exception (metacom packet):
+Result with exception (metacom packet):<br/>
 `{"callback":1,"error":{"message":"Internal Server Error","code":500}}`
 
-How to override error codes:
-`throw new Error('Method is not implemented', 404);`
-This will take error message from code:
+How to override error codes:<br/>
+`throw new Error('Method is not implemented', 404);`<br/>
+This will take error message from code:<br/>
 `{"callback":1,"error":{"message":"Not found","code":404}}`
 
-If you specify unknown code like this:
-`throw new Error('Method is not implemented', 12345);`
+If you specify unknown code like this:<br/>
+`throw new Error('Method is not implemented', 12345);`<br/>
 This will generate: `"Internal Server Error"` with `"code":500`
