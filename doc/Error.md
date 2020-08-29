@@ -19,28 +19,31 @@ asynchronous business-logic scenario).
 ```
 
 Result with data (metacom packet):
-```js
-{"callback":1,"result":{"key":"value"}}
-```
+`{"callback":1,"result":{"key":"value"}}`
 
 Result with error (metacom packet):
-```js
-{"callback":1,"error":{"message":"Data is not valid","code":10}}
-```
+`{"callback":1,"error":{"message":"Data is not valid","code":10}}`
 
 ## Rise exception
 
 - Application server will return HTTP 500 or abstract RPC error code.
-- Application server may transfer exceptions over the network without stack trace
-and sensitive error messages (all this data will be logged instead).
+- Application server may transfer exceptions over the network without stack
+trace and sensitive error messages (all this data will be logged instead).
 
 ```js
 (async ({ ...args }) => {
-   throw new Error('Method is not implemented', 20);
+  throw new Error('Method is not implemented');
 });
 ```
 
-Result with exception (metacom packet):
-```js
-{"callback":1,"error":{"message":"Internal Server Error","code":500}}
-```
+Result with exception (metacom packet):<br/>
+`{"callback":1,"error":{"message":"Internal Server Error","code":500}}`
+
+How to override error codes:<br/>
+`throw new Error('Method is not implemented', 404);`<br/>
+This will take error message from code:<br/>
+`{"callback":1,"error":{"message":"Not found","code":404}}`
+
+If you specify unknown code like this:<br/>
+`throw new Error('Method is not implemented', 12345);`<br/>
+This will generate: `"Internal Server Error"` with `"code":500`
