@@ -7,5 +7,5 @@
 - [Internal and external dependencies](doc/Dependency.md)
 - [Metacom protocol](doc/Metacom.md)
 - [Error-handling guidelines](doc/Error.md)
-- [Database schema](doc/Schema.md)
+- [Database schema](doc/Database.md)
 - [Task definition file](doc/Task.md)
