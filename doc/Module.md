@@ -1,10 +1,9 @@
 # Domain and library module contract
 
-|                      |                                               |
+| Directory            | Description                                   |
 | -------------------- | --------------------------------------------- |
 | `application/domain` | Domain code (use cases or business-logic)     |
 | `application/lib`    | Libraries, helpers, adapters for dependencies |
-|                      |                                               |
 
 Place your methods in file structure like in following example:
 `/application/domain/submodule/functionName.js` and loader will read all `.js`
