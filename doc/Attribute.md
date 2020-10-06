@@ -11,8 +11,8 @@
 | `update`           | `cascade, restrict, no action, set null, set default` |
 | `control`          | UI control name                                       |
 | `lookup`           | `{ caption, key, result, type }`                      |
-|   `.type`          | `container, link, dictionary, tag, flag, tree`        |
-|   `.display`       | `master detail, list, autocomplete, paged`            |
+| `lookup.type`      | `container, link, dictionary, tag, flag, tree`        |
+| `lookup.display`   | `master detail, list, autocomplete, paged`            |
 | `order`            | `<number>` attribute order                            |
 | `editable`         | `true, false, initial`                                |
 | `case`             | `normal, upper, lower, capitalize, title`             |
@@ -21,12 +21,13 @@
 | `max`              | `<number>`                                            |
 | `default`          | Value by default                                      |
 | `example`          | `<string>` Example value                              |
+| `hint`             | `<string>` User hint for UI                           |
 | `regexp`           | `<string>` Regular expression                         |
-| `comments`         | `<string>` comments for developers                    |
+| `comments`         | `<string>` Comments for developers                    |
+| `include`          | `<string>` Entity name to be included here            |
 
 | Attribute metadata   | Description                                         |
 | -------------------- | --------------------------------------------------- |
 | `validate`           |                                                     |
 | `format`             |                                                     |
-| `validate`           |                                                     |
 | `validate`           |                                                     |
