@@ -32,7 +32,7 @@
 
 | Attribute metadata   | Description                                         |
 | -------------------- | --------------------------------------------------- |
-| `validate`           |                                                     |
-| `format`             |                                                     |
-| `parse`              |                                                     |
-| `serialize`          |                                                     |
+| `validate`           | `(record, previous) => result: boolean`             |
+| `format`             | `value: <type> => result: <type>`                   |
+| `parse`              | `string => <type>`                                  |
+| `serialize`          | `<type> => <string>`                                |
