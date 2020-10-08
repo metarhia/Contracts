@@ -63,6 +63,17 @@ Here is `Country` is a different entity referred from this one.
 
 ## Composite, complex and custom index
 
+Define custom primary key:
+```js
+({
+  company: 'Company',
+  city: 'City',
+
+  companyCity: { primary: ['Company', 'City'] },
+});
+// This will generate pkCompanyCity
+```
+
 Many-to-many relation (Company-to-City):
 ```js
 // File: Company.js
