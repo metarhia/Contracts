@@ -60,3 +60,48 @@ For example, `City.js` definition may looks like:
 ```
 
 Here is `Country` is a different entity referred from this one.
+
+## Composite, complex and custom index
+
+Many-to-many relation (Company-to-City):
+```js
+// File: Company.js
+({
+  name: 'string',
+  cities: { many: 'City' },
+});
+// This will generate CompanyCities cross-reference table
+// with structure: { company, city }
+```
+
+Unique composite index:
+```js
+({
+  country: 'Country',
+  name: 'string',
+
+  nameByCountry: { unique: ['country', 'name'] },
+});
+```
+
+Not unique composite index:
+```js
+({
+  street: 'string',
+  building: 'string',
+  apartment: 'string',
+
+  natural: { index: ['street', 'building', 'apartment'] },
+});
+```
+
+Custom indexes (gin, gist):
+```js
+({
+  name: 'string',
+  location: 'point',
+
+  akName: { index: 'gin (name gin_trgm_ops)' },
+  akLocation: { index: 'gist (location)' },
+});
+```
