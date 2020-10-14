@@ -52,6 +52,8 @@ Where `<EntityName>` is a name of certain Entity (Class) of subject domain.
 For example, `City.js` definition may looks like:
 ```js
 ({
+  City: 'global dictionary',
+
   country: 'Country',
   name: { type: 'string', unique: true },
   location: { type: 'point', required: false },
@@ -60,6 +62,11 @@ For example, `City.js` definition may looks like:
 ```
 
 Here is `Country` is a different entity referred from this one.
+
+Scope: `'global'`, `'system'`, `'local'`, `'memory'`.
+
+Kind: `'dictionary'`, `'registry'`, `'entity'`, `'log'`, `'details'`,
+`'relation'`, `'struct'`, `'form'`, `'view'`, `'projection'`.
 
 ## Composite, complex and custom index
 
