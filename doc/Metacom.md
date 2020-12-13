@@ -16,7 +16,7 @@ of [JSTP protocol](https://github.com/metarhia/jstp).
 
 ## Packet types
 
-There are following packet types: `call`, `callback`, `event`, `stream`.
+There are following packet types: `call`, `callback`, `event`, `stream`, `ping`.
 
 ## Calls and callbacks
 
@@ -45,3 +45,9 @@ There are following packet types: `call`, `callback`, `event`, `stream`.
 ```js
 {"stream":<Number>,"chunk":<Number>"}<Buffer>
 ```
+
+## Ping packets
+
+Client may periodically generate ping packets `{}` (empty objects, without
+fields and id) to test connection. Server should also answer with empty object
+`{}`.
