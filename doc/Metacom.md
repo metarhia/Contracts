@@ -42,23 +42,18 @@ There are following packet types: `call`, `callback`, `event`, `stream`, `ping`.
 
 ## Streams
 
-Stream initialization:
 ```js
+// Stream initialization
 {"stream":<Number>,"name":<String>,"size":<Number>}
-```
 
-Stream chunk:
-```js
-{"stream":<Number>,"size":<Number>}<Buffer>
-```
+// Stream chunk
+{"stream":<Number>}
+// Next frame: <Buffer>
 
-Stream finalization:
-```js
+// Stream finalization
 {"stream":<Number>,"status":"end"}
-```
 
-Stream termination:
-```js
+// Stream termination
 {"stream":<Number>,"status":"terminate"}
 ```
 
