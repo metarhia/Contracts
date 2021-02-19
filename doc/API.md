@@ -63,7 +63,8 @@ Declaration elements (fields):
 - `parameters: Schema` (optional) - parameters declarative schema;
 - `validate: function` (optional) - parameters imperative validation function;
 - `timeout: number` (optional) - execution timeout in milliseconds;
-- `concurrency: number` (optional) - maximum number of concurrent requests;
+- `queue: { concurrency: number, size: number, timeout: number }` (optional) -
+  maximum number of concurrent requests, queue size, and timeout;
 - `sirializer: string` (optional, default: `json`) - serialization format;
 - `protocols: Array<string>` (optional, default: server default) - set `['http']`
   to allow web hooks, (allowed values: `http`, `https`, `ws`, `wss`);
@@ -75,6 +76,7 @@ Declaration elements (fields):
 - `example: object` (optional) - single example (shorthand);
 - `errors: Array<object>` (optional) - collection of possible error;
 
+Example method with a contract:
 ```js
 ({
   parameters: {
@@ -88,10 +90,6 @@ Declaration elements (fields):
     if (b % 5 === 0) throw new Error('Expected `b` to be multiple of 5');
   },
 
-  timeout: 1000,
-  concurrency: 1,
-  sirializer: 'json',
-
   method: async ({ a, b }) => {
     const result = a + b;
     return result;
@@ -103,6 +101,24 @@ Declaration elements (fields):
     if (result < a && result < b) {
       throw new Error('Result expected to be greater than parameters');
     }
+  },
+});
+```
+
+Example method with timeout and queue:
+```js
+({
+  timeout: 1000,
+
+  queue: {
+    concurrency: 1,
+    size: 200,
+    timeout: 3000,
+  },
+
+  method: async ({ a, b }) => {
+    const result = a + b;
+    return result;
   },
 });
 ```
