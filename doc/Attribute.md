@@ -20,7 +20,7 @@
 | `order`            | `number`, attribute order                                 |
 | `editable`         | `boolean`, editable in UI                                 |
 | `case`             | `normal, upper, lower, capitalize, title`                 |
-| `length`           | `number | { min: 'number', max: 'number' }`               |
+| `length`           | `number` or `{ min: 'number', max: 'number' }`            |
 | `min`              | `number`                                                  |
 | `max`              | `number`                                                  |
 | `default`          | Value by default                                          |
