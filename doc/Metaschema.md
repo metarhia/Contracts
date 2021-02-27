@@ -23,17 +23,21 @@
 ## Collections
 
 - Object collection with `string` keys and `number` values:
-  `field: { object: { string: 'number' } }`
+  - `field: { collection: 'object', key: 'string', value: 'number' }`
+  - or short `field: { object: { string: 'number' } }`
 - Array of number, maximum lenght of 10 elements:
-  `field: { array: 'number', length: 10 }`
+  - `field: { collection: 'array', value: 'number', length: 10 }`
+  - or short `field: { array: 'number', length: 10 }`
 - Array of string, lenght betweeb 10 and 20 elements:
-  `field: { array: 'number', length: { min: 10, max: 20 } }`
+  - short form `field: { array: 'number', length: { min: 10, max: 20 } }`
+- Set of numbers:
+  - `fieeld: { collection: 'set', value: 'number' }`
+  - or short `fieeld: { set: 'number' }`
+- Map with `string` keys and `number` values:
+  - `{ map: { collection: 'map', key: 'string', value: 'number' } }`
+  - or short `{ map: { string: 'number' } }`
 - Tuple of two numbers:
   `field: ['number', 'number']`
-- Set of numbers:
-  `fieeld: { set: 'number' }`
-- Map with `string` keys and `number` values:
-  `{ map: { string: 'number' } }`
 
 ## Complex types
 
