@@ -31,11 +31,11 @@
 - Array of string, lenght betweeb 10 and 20 elements:
   - short form `field: { array: 'number', length: { min: 10, max: 20 } }`
 - Set of numbers:
-  - `fieeld: { collection: 'set', value: 'number' }`
+  - `field: { collection: 'set', value: 'number' }`
   - or short `fieeld: { set: 'number' }`
 - Map with `string` keys and `number` values:
-  - `{ map: { collection: 'map', key: 'string', value: 'number' } }`
-  - or short `{ map: { string: 'number' } }`
+  - `{ field: { collection: 'map', key: 'string', value: 'number' } }`
+  - or short `{ field: { string: 'number' } }`
 - Tuple of two numbers:
   `field: ['number', 'number']`
 
