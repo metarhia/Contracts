@@ -40,6 +40,18 @@
   - Tuple of 3 numbers: `field: { type: 'tuple', value: 'number', length: 3 }`
   - Tuple of two elements (number and string) `field: ['string', 'number']`
 
+## Enumerated
+
+- Value of enumerated type:
+  - Shorthand: `field: { enum: ['uno', 'due', 'tre'] }`
+  - Long form: `field: { type: 'enum', enum: ['uno', 'due', 'tre'] }`
+- Array of enumerated type:
+  - Long form: `field: { type: 'array', enum: ['uno', 'due', 'tre'] }`
+  - Shorthand: `field: { array: { enum: ['uno', 'due', 'tre'] } }`
+- Map of enumerated type values and string keys:
+  - Long form: `field: { type: 'map', key: 'string' enum: [1, 2, 3] }`
+  - Shorthand: `field: { map: { key: 'string', enum: [1, 2, 3] } }`
+
 ## Complex types
 
 - Domain (complex type defined in this model with UperrCamalCase name):
