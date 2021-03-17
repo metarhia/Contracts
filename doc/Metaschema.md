@@ -34,8 +34,8 @@
   - Shorthand: `fieeld: { set: 'number' }`
   - Long form: `field: { type: 'set', value: 'number' }`
 - Map with `string` keys and `number` values:
-  - Shorthand: `{ field: { string: 'number' } }`
-  - Long form: `{ field: { type: 'map', key: 'string', value: 'number' } }`
+  - Shorthand: `field: { string: 'number' }`
+  - Long form: `field: { type: 'map', key: 'string', value: 'number' }`
 - Tuples
   - Tuple of 3 numbers: `field: { type: 'tuple', value: 'number', length: 3 }`
   - Tuple of two elements (number and string) `field: ['string', 'number']`
@@ -46,11 +46,11 @@
   - Shorthand: `field: { enum: ['uno', 'due', 'tre'] }`
   - Long form: `field: { type: 'enum', enum: ['uno', 'due', 'tre'] }`
 - Array of enumerated type:
-  - Long form: `field: { type: 'array', enum: ['uno', 'due', 'tre'] }`
   - Shorthand: `field: { array: { enum: ['uno', 'due', 'tre'] } }`
+  - Long form: `field: { type: 'array', enum: ['uno', 'due', 'tre'] }`
 - Map of enumerated type values and string keys:
-  - Long form: `field: { type: 'map', key: 'string' enum: [1, 2, 3] }`
   - Shorthand: `field: { map: { key: 'string', enum: [1, 2, 3] } }`
+  - Long form: `field: { type: 'map', key: 'string' enum: [1, 2, 3] }`
 
 ## Complex types
 
