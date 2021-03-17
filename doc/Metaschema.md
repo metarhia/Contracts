@@ -23,21 +23,22 @@
 ## Collections
 
 - Object collection with `string` keys and `number` values:
-  - `field: { collection: 'object', key: 'string', value: 'number' }`
-  - or short `field: { object: { string: 'number' } }`
+  - Shorthand: `field: { object: { string: 'number' } }`
+  - Long form: `field: { type: 'object', key: 'string', value: 'number' }`
 - Array of number, maximum lenght of 10 elements:
-  - `field: { collection: 'array', value: 'number', length: 10 }`
-  - or short `field: { array: 'number', length: 10 }`
+  - Long form: `field: { type: 'array', value: 'number', length: 10 }`
+  - Shorthand: `field: { array: 'number', length: 10 }`
 - Array of string, lenght betweeb 10 and 20 elements:
-  - short form `field: { array: 'number', length: { min: 10, max: 20 } }`
+  - Shorthand: `field: { array: 'number', length: { min: 10, max: 20 } }`
 - Set of numbers:
-  - `field: { collection: 'set', value: 'number' }`
-  - or short `fieeld: { set: 'number' }`
+  - Shorthand: `fieeld: { set: 'number' }`
+  - Long form: `field: { type: 'set', value: 'number' }`
 - Map with `string` keys and `number` values:
-  - `{ field: { collection: 'map', key: 'string', value: 'number' } }`
-  - or short `{ field: { string: 'number' } }`
-- Tuple of two numbers:
-  `field: ['number', 'number']`
+  - Shorthand: `{ field: { string: 'number' } }`
+  - Long form: `{ field: { type: 'map', key: 'string', value: 'number' } }`
+- Tuples
+  - Tuple of 3 numbers: `field: { type: 'tuple', value: 'number', length: 3 }`
+  - Tuple of two elements (number and string) `field: ['string', 'number']`
 
 ## Complex types
 
