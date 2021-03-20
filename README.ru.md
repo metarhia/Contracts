@@ -5,7 +5,7 @@
 описано, как должно быть. Чтобы узнать актуальную информацию, смотрите
 документацию тут: https://github.com/metarhia/Docs
 
-Языки: [English](INDEX.md) | [Русский](INDEX.ru.md)
+Языки: [English](README.md) | [Русский](README.ru.md)
 
 - [Контракт API функций](doc/API.md)
 - [Конфигурация приложения](doc/Configuration.md)
