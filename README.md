@@ -5,7 +5,7 @@ specification is the current state of the art in the technology stack. Here we
 describe how it should be. For the latest information, see the documentation
 here: https://github.com/metarhia/Docs
 
-Languages: [English](INDEX.md) | [Русский](INDEX.ru.md)
+Languages: [English](README.md) | [Русский](README.ru.md)
 
 - [API function contract](doc/API.md)
 - [Application configuration](doc/Configuration.md)
