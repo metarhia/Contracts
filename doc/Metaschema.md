@@ -25,13 +25,13 @@
 - Object collection with `string` keys and `number` values:
   - Shorthand: `field: { object: { string: 'number' } }`
   - Long form: `field: { type: 'object', key: 'string', value: 'number' }`
-- Array of number, maximum lenght of 10 elements:
+- Array of number, maximum length of 10 elements:
   - Long form: `field: { type: 'array', value: 'number', length: 10 }`
   - Shorthand: `field: { array: 'number', length: 10 }`
-- Array of string, lenght betweeb 10 and 20 elements:
+- Array of string, length between 10 and 20 elements:
   - Shorthand: `field: { array: 'number', length: { min: 10, max: 20 } }`
 - Set of numbers:
-  - Shorthand: `fieeld: { set: 'number' }`
+  - Shorthand: `field: { set: 'number' }`
   - Long form: `field: { type: 'set', value: 'number' }`
 - Map with `string` keys and `number` values:
   - Shorthand: `field: { string: 'number' }`
