@@ -24,7 +24,7 @@ Result with data (metacom packet):
 Result with error (metacom packet):
 `{"callback":1,"error":{"message":"Data is not valid","code":10}}`
 
-## Rise exception
+## Raise exception
 
 - Application server will return HTTP 500 or abstract RPC error code.
 - Application server may transfer exceptions over the network without stack
