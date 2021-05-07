@@ -27,12 +27,12 @@
 | `example`          | `string`, example value                                   |
 | `hint`             | `string`, user hint for UI                                |
 | `pattern`          | `string`, regular expression                              |
-| `comments`         | `string`, comments for developers                         |
+| `note`             | `string`, comments for developers                         |
 | `include`          | `string`, entity name to be included here                 |
 
 | Attribute metadata   | Description                                         |
 | -------------------- | --------------------------------------------------- |
-| `validate`           | `(record, previous) => result: boolean`             |
-| `format`             | `value: <type> => result: <type>`                   |
-| `parse`              | `string => <type>`                                  |
-| `serialize`          | `<type> => <string>`                                |
+| `validate`           | `(record, previous) => boolean`                     |
+| `format`             | `value: unknown => unknown`                         |
+| `parse`              | `string => unknown`                                 |
+| `serialize`          | `unknown => string`                                 |
