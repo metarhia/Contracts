@@ -54,5 +54,5 @@
 
 ## Complex types
 
-- Domain (complex type defined in this model with UperrCamalCase name):
+- Domain (complex type defined in this model with UpperCamalCase name):
   `field: 'DomainName'` or `field: { type: 'DomainName' }`
