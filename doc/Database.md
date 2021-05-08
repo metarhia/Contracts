@@ -58,6 +58,11 @@ For example, `City.js` definition may looks like:
   name: { type: 'string', unique: true },
   location: { type: 'point', required: false },
   population: { type: 'number', default: 0 },
+
+  area: { // group of fields
+    total: '?number', // nullable field (shorthand for required: false)
+    water: '?number',
+  },
 });
 ```
 
