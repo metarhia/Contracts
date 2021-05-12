@@ -52,7 +52,7 @@ Where `<EntityName>` is a name of certain Entity (Class) of subject domain.
 For example, `City.js` definition may looks like:
 ```js
 ({
-  City: 'global dictionary',
+  Registry: { realm: 'application', storage: 'append' },
 
   country: 'Country',
   name: { type: 'string', unique: true },
@@ -66,12 +66,21 @@ For example, `City.js` definition may looks like:
 });
 ```
 
-Here is `Country` is a different entity referred from this one.
+Here is `Registry` is a metadata record. Other allowed kinkds:
+- `Dictionary` - lookup table, have own id for primary key,
+- `Registry` - registry, uses global identifier for primary key,
+- `Entity` - entity, uses global identifier for primary key,
+- `Journal` - access logs and other logs, have own id for primary key),
+- `Details` - details for registry or entity table, have own id for primary key,
+- `Relation` - detailes (fields) attached to the intersection of multiple
+  entities or registries, uses composite key as a primary key.
 
-Scope: `'global'`, `'system'`, `'local'`, `'memory'`.
+Realm:
+- `global` - universal and globally used data,
+- `application` - application specific data,
+- `local` - data stored on this certain server.
 
-Kind: `'dictionary'`, `'registry'`, `'entity'`, `'log'`, `'details'`,
-`'relation'`, `'struct'`, `'form'`, `'view'`, `'projection'`.
+Storage: `enum: ['persistent', 'append', 'view', 'memory'] }`.
 
 ## Composite, complex and custom index
 
