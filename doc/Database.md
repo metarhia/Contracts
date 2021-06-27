@@ -67,18 +67,22 @@ For example, `City.js` definition may looks like:
 ```
 
 Here is `Registry` is a metadata record. Other allowed kinkds:
-- `Dictionary` - lookup table, have own id for primary key,
-- `Registry` - registry, uses global identifier for primary key,
-- `Entity` - entity, uses global identifier for primary key,
-- `Journal` - access logs and other logs, have own id for primary key),
-- `Details` - details for registry or entity table, have own id for primary key,
-- `Relation` - detailes (fields) attached to the intersection of multiple
-  entities or registries, uses composite key as a primary key.
+- `Dictionary` - lookup table, have own id for primary key;
+- `Registry` - registry, uses global identifier for primary key;
+- `Entity` - entity, uses global identifier for primary key;
+- `Journal` - access logs and other logs, have own id for primary key);
+- `Details` - details for registry or entity table, have own id for primary key;
+- `Relation` - detailes attached to the intersection of multiple entities;
+- `View` - named query database allow to select from as from regular table;
+- `Struct` - structure (in-memory, API contract or db complex data type);
+- `Scalar` - scalar value;
+- `Form` - user interface form;
+- `Projection` - schema projection;
 
 Realm:
-- `global` - universal and globally used data,
-- `application` - application specific data,
-- `local` - data stored on this certain server.
+- `global` - universal and globally used data;
+- `application` - application specific data;
+- `local` - data stored on this certain server;
 
 Storage: `enum: ['persistent', 'append', 'view', 'memory'] }`.
 
