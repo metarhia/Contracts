@@ -69,7 +69,7 @@ For example, `City.js` definition may looks like:
 Here is `Registry` is a metadata record. Other allowed kinkds:
 - `Dictionary` - lookup table, have own id for primary key;
 - `Registry` - registry, uses global identifier for primary key;
-- `Entity` - entity, uses global identifier for primary key;
+- `Entity` - entity, has own id for primary key;
 - `Journal` - access logs and other logs, have own id for primary key);
 - `Details` - details for registry or entity table, have own id for primary key;
 - `Relation` - detailes attached to the intersection of multiple entities;
