@@ -4,7 +4,7 @@
 
 Task files are JSON files (with name format `YYYY-MM-DD-id-N.json`) placed in
 `application/tasks`. These files will be created and deleted automatically.
-On the application server start all files will be loaded into special a thread
+On the application server start all files will be loaded into a special thread
 to be executed.
 
 How to schedule a task:
