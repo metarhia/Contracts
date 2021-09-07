@@ -29,7 +29,7 @@ Following file `/application/lib/moduleName.js` with content:
 ({
   CONST_NAME: 1000,
 
-  privateField: { data: 'value' },
+  fieldName: { data: 'value' },
 
   syncMethodName(args) {
     const result = { data: this.privateField };
@@ -42,7 +42,6 @@ Following file `/application/lib/moduleName.js` with content:
   }
 });
 ```
-describes module and will generate namespace `lib.moduleName` where constant will
-be accessible as `lib.moduleName.CONST_NAME`, both methods will be also visible,
-but all private fields (like `privateField`) will be accessible just from methods
-as `this.privateField` but you can't access it from any other file.
+describes module and will generate namespace `lib.moduleName` where constant, fields,
+and methods will be accessible as `lib.moduleName.CONST_NAME`, `lib.moduleName.fieldName`,
+`lib.moduleName.syncMethodName`, and `lib.moduleName.asyncMethodName`.
