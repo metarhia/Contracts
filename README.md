@@ -18,5 +18,6 @@ Languages: [English](README.md) | [Русский](README.ru.md)
 - [Attribute/value schema](doc/Attribute.md)
 - [Task definition file](doc/Task.md)
 - Messaging subsystem
+- Knowledge base subsustem (content publishing and discussion)
 - Payment subsystem
 - User account, rights and auth subsystem
