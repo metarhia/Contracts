@@ -17,7 +17,9 @@ Languages: [English](README.md) | [Русский](README.ru.md)
 - [Database schema](doc/Database.md)
 - [Attribute/value schema](doc/Attribute.md)
 - [Task definition file](doc/Task.md)
-- Messaging subsystem
-- Knowledge base subsustem (content publishing and discussion)
-- Payment subsystem
-- User account, rights and auth subsystem
+- [Messaging subsystem](doc/Messaging.md)
+- [User account, rights and auth subsystem](doc/Users.md)
+- [User groups subsystem](doc/UserGroups.md)
+- [Knowledge base subsustem (content publishing and discussion)](doc/KnowledgeBase.md)
+- [Payment subsystem](doc/Payment.md)
+- [Highload architecture](doc/Highload.md)
