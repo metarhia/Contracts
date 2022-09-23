@@ -44,7 +44,7 @@ Task file example:
 - `Sun 17:` - every Sunday at `17:00`
 - `20th 17:15` - every 20th of any month at `17:15`
 - `Apr Sun :30` - at HH:30 every hour on Sunday of April
-- `2nd :30` - every 1st of any month at HH:30 every hour
+- `2nd :30` - every 2nd of any month at HH:30 every hour
 - `Sun 3rd 00:` - every Sunday if this day will be 3rd of month at `00:00`
 - `30m 17s` - interval 30 minutes and 17 seconds
 - `Sun 5h 30m` - every Sunday with interval 5 hours 30 minutes
