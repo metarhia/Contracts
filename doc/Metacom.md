@@ -24,10 +24,10 @@ Call format:
 ```js
 {
   "type": "call",
-  "id": number,
-  "interface": string,
+  "id": number,         // we need call id to match result (metacom callback packet)
+  "interface": string,  // interface may contain version, for example "chat.5"
   "method": string,
-  "args": object
+  "args": object        // we use named arguments to be able marc them optional
 }
 ```
 
@@ -36,11 +36,8 @@ Callback format:
 {
   "type": "callback",
   "id": number,
-  "result": any,
-  "error": {
-    "code": number,
-    "message": string
-  }
+  "result": any,        // any data (object, array or a single value)
+  "error": { "code": number, "message": string }
 }
 ```
 
@@ -55,7 +52,7 @@ Examples:
 Format:
 ```js
 {
-  "type": "event",
+  "type": "event", // events have no packet id, unlike call packets and events in metacom version 2
   "interface": string,
   "name": string,
   "args": object
