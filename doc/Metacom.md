@@ -1,4 +1,4 @@
-# Metacom protocol
+# Metacom protocol Version 3
 
 [Metacom](https://github.com/metarhia/metacom) is a top-level application
 protocol for RPC (remote procedure call) and large binary objects transfer.
@@ -20,41 +20,74 @@ There are following packet types: `call`, `callback`, `event`, `stream`, `ping`.
 
 ## Calls and callbacks
 
+Call format:
 ```js
-// Format:
-{"type":"call","id":<Number>,"interface":<String>,"method":<String>,"args":<Object>}
-{"type":"callback","id":<Number>,"result":<any>,"error":{"code":<Number>,"message":<String>}}
+{
+  "type": "call",
+  "id": number,
+  "interface": string,
+  "method": string,
+  "args": object
+}
+```
 
-// Example:
+Callback format:
+```js
+{
+  "type": "callback",
+  "id": number,
+  "result": any,
+  "error": {
+    "code": number,
+    "message": string
+  }
+}
+```
+
+Examples:
+```json
 {"type":"call","id":110,"interface":"auth","method":"signIn","args":{"login":"marcus","password":"marcus"}}
 {"callback":110,"result":{"token":"2bSpjzG8lTSHaqihGQCgrldypyFAsyme"}}
 ```
 
 ## Events
 
+Format:
 ```js
-// Format:
-{"type":"event","interface":<String>,"name":<String>,"args":<Object>}
+{
+  "type": "event",
+  "interface": string,
+  "name": string,
+  "args": object
+}
+```
 
-// Example:
+Example:
+```json
 {"type":"event","interface":"chat","name":"message","args":{"from":"marcus","message":"Hello!"}}
 ```
 
 ## Streams
 
+Stream initialization:
 ```js
-// Stream initialization
-{"type":"stream","id":<Number>,"name":<String>,"size":<Number>}
+{ "type": "stream", "id": number, "name": string, "size": number }
+```
 
-// Stream chunk
-{"type":"stream","id":<Number>}
-// Next frame: <Buffer>
+Stream chunk:
+```js
+{ "type": "stream", "id": number }
+```
+Next frame: `Buffer`
 
-// Stream finalization
-{"type":"stream","id":<Number>,"status":"end"}
+Stream finalization:
+```js
+{ "type": "stream", "id": number, "status": "end" }
+```
 
-// Stream termination
-{"type":"stream","id":<Number>,"status":"terminate"}
+Stream termination:
+```js
+{ "type": "stream", "id": number, "status": "terminate" }
 ```
 
 ## Ping packets
