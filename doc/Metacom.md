@@ -35,7 +35,7 @@ Callback format:
 ```js
 {
   "type": "callback",
-  "id": number,
+  "id": number,         // 
   "result": any,        // any data (object, array or a single value)
   "error": { "code": number, "message": string }
 }
@@ -55,13 +55,13 @@ Format:
   "type": "event", // events have no packet id, unlike call packets and events in metacom version 2
   "interface": string,
   "name": string,
-  "args": object
+  "data": object
 }
 ```
 
 Example:
 ```json
-{"type":"event","interface":"chat","name":"message","args":{"from":"marcus","message":"Hello!"}}
+{"type":"event","interface":"chat","name":"message","data":{"from":"marcus","message":"Hello!"}}
 ```
 
 ## Streams
