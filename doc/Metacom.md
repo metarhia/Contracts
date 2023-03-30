@@ -22,11 +22,11 @@ There are following packet types: `call`, `callback`, `event`, `stream`, `ping`.
 
 ```js
 // Format:
-{"call":<Number>,"interface.version/method":{<parameters>}}
-{"callback":<Number>,"result":<any>,"error":{"code":<Number>,"message":<String>}}
+{"type":"call","id":<Number>,"interface":<String>,"method":<String>,"args":<Object>}
+{"type":"callback","id":<Number>,"result":<any>,"error":{"code":<Number>,"message":<String>}}
 
 // Example:
-{"call":110,"auth/signIn":{"login":"marcus","password":"marcus"}}
+{"type":"call","id":110,"interface":"auth","method":"signIn","args":{"login":"marcus","password":"marcus"}}
 {"callback":110,"result":{"token":"2bSpjzG8lTSHaqihGQCgrldypyFAsyme"}}
 ```
 
@@ -34,27 +34,27 @@ There are following packet types: `call`, `callback`, `event`, `stream`, `ping`.
 
 ```js
 // Format:
-{"event":<Number>,"interface/event":{<parameters>}}
+{"type":"event","interface":<String>,"name":<String>,"args":<Object>}
 
 // Example:
-{"event":-25,"chat/message":{"from":"marcus","message":"Hello!"}}
+{"type":"event","interface":"chat","name":"message","args":{"from":"marcus","message":"Hello!"}}
 ```
 
 ## Streams
 
 ```js
 // Stream initialization
-{"stream":<Number>,"name":<String>,"size":<Number>}
+{"type":"stream","id":<Number>,"name":<String>,"size":<Number>}
 
 // Stream chunk
-{"stream":<Number>}
+{"type":"stream","id":<Number>}
 // Next frame: <Buffer>
 
 // Stream finalization
-{"stream":<Number>,"status":"end"}
+{"type":"stream","id":<Number>,"status":"end"}
 
 // Stream termination
-{"stream":<Number>,"status":"terminate"}
+{"type":"stream","id":<Number>,"status":"terminate"}
 ```
 
 ## Ping packets
