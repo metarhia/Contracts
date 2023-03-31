@@ -23,27 +23,29 @@ There are following packet types: `call`, `callback`, `event`, `stream`, `ping`.
 Call format:
 ```js
 {
-  "type": "call",
-  "id": number,         // we need call id to match result (metacom callback packet)
-  "interface": string,  // interface may contain version, for example "chat.5"
-  "method": string,
-  "args": object        // we use named arguments to be able marc them optional
+  type: "call",
+  id: number,      // we need call id to match result (metacom callback packet)
+  unit: string,    // application subsystem or interface name; may contain version: "chat.5"
+  method: string,  // method name in the scope of unit
+  args: object,    // we use named arguments to be able marc them optional
+  meta: object,    // field for optional passthrough metadata
 }
 ```
 
 Callback format:
 ```js
 {
-  "type": "callback",
-  "id": number,         // 
-  "result": any,        // any data (object, array or a single value)
-  "error": { "code": number, "message": string }
+  type: "callback",
+  id: number,      // call id
+  result: any,     // any data (object, array or a single value)
+  error: { "code": number, "message": string },
+  meta: object,    // field for optional passthrough metadata
 }
 ```
 
 Examples:
 ```json
-{"type":"call","id":110,"interface":"auth","method":"signIn","args":{"login":"marcus","password":"marcus"}}
+{"type":"call","id":110,"unit":"auth","method":"signIn","args":{"login":"marcus","password":"marcus"}}
 {"callback":110,"result":{"token":"2bSpjzG8lTSHaqihGQCgrldypyFAsyme"}}
 ```
 
@@ -52,40 +54,28 @@ Examples:
 Format:
 ```js
 {
-  "type": "event", // events have no packet id, unlike call packets and events in metacom version 2
-  "interface": string,
-  "name": string,
-  "data": object
+  type: "event", // events have no packet id, unlike call packets and events in metacom version 2
+  unit: string,  // application subsystem
+  name: string,  // event name
+  data: object,  // attached data
+  meta: object,  // field for optional passthrough metadata
 }
 ```
 
 Example:
 ```json
-{"type":"event","interface":"chat","name":"message","data":{"from":"marcus","message":"Hello!"}}
+{"type":"event","unit":"chat","name":"message","data":{"from":"marcus","message":"Hello!"}}
 ```
 
 ## Streams
 
-Stream initialization:
-```js
-{ "type": "stream", "id": number, "name": string, "size": number }
-```
+Stream initialization: `{"type":"stream","id":number,"name":string,"size":number}`
 
-Stream chunk:
-```js
-{ "type": "stream", "id": number }
-```
-Next frame: `Buffer`
+Stream chunk: `{"type":"stream","id": number}`; Next frame: `Buffer`.
 
-Stream finalization:
-```js
-{ "type": "stream", "id": number, "status": "end" }
-```
+Stream finalization: `{"type":"stream","id":number,"status":"end"}`
 
-Stream termination:
-```js
-{ "type": "stream", "id": number, "status": "terminate" }
-```
+Stream termination:`{"type":"stream","id":number,"status":"terminate"}`
 
 ## Ping packets
 
