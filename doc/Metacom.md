@@ -25,8 +25,7 @@ Call format:
 {
   type: "call",
   id: number,      // we need call id to match result (metacom callback packet)
-  unit: string,    // application subsystem or interface name; may contain version: "chat.5"
-  method: string,  // method name in the scope of unit
+  method: string,  // method name format: unit/name or unit.version/name, example: "chat.5/send"
   args: object,    // we use named arguments to be able marc them optional
   meta: object,    // field for optional passthrough metadata
 }
@@ -45,7 +44,7 @@ Callback format:
 
 Examples:
 ```json
-{"type":"call","id":110,"unit":"auth","method":"signIn","args":{"login":"marcus","password":"marcus"}}
+{"type":"call","id":110,"method":"auth/signIn","args":{"login":"marcus","password":"marcus"}}
 {"callback":110,"result":{"token":"2bSpjzG8lTSHaqihGQCgrldypyFAsyme"}}
 ```
 
@@ -55,8 +54,7 @@ Format:
 ```js
 {
   type: "event", // events have no packet id, unlike call packets and events in metacom version 2
-  unit: string,  // application subsystem
-  name: string,  // event name
+  name: string,  // event name in format: unit/name, example: "chat/message"
   data: object,  // attached data
   meta: object,  // field for optional passthrough metadata
 }
@@ -64,7 +62,7 @@ Format:
 
 Example:
 ```json
-{"type":"event","unit":"chat","name":"message","data":{"from":"marcus","message":"Hello!"}}
+{"type":"event","name":"unit/message","data":{"from":"marcus","message":"Hello!"}}
 ```
 
 ## Streams
