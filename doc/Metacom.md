@@ -71,6 +71,7 @@ Stream initialization:
 ```js
 {
   type: "stream",
+  dest: 'server' | 'client',
   id: number,
   name: string,
   size: number,
@@ -81,6 +82,7 @@ Stream chunk:
 ```js
 {
   type: "stream",
+  dest: 'server' | 'client',
   id: number,
 } // Next frame: `Buffer`
 ```
@@ -89,6 +91,7 @@ Stream finalization:
 ```js
 {
   type: "stream",
+  dest: 'server' | 'client',
   id: number,
   status: "end",
 }
@@ -98,6 +101,7 @@ Stream termination:
 ```js
 {
   type: "stream",
+  dest: 'server' | 'client',
   id: number,
   status: "terminate",
 }
