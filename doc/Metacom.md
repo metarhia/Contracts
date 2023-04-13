@@ -26,7 +26,7 @@ Call format:
   type: "call",
   id: number,      // we need call id to match result (metacom callback packet)
   method: string,  // method name format: unit/name or unit.version/name, example: "chat.5/send"
-  args: object,    // we use named arguments to be able marc them optional
+  args: object,    // we use named arguments to be able mark them optional
   meta: object,    // field for optional passthrough metadata
 }
 ```
@@ -45,7 +45,7 @@ Callback format:
 Examples:
 ```json
 {"type":"call","id":110,"method":"auth/signIn","args":{"login":"marcus","password":"marcus"}}
-{"callback":110,"result":{"token":"2bSpjzG8lTSHaqihGQCgrldypyFAsyme"}}
+{"type":"callback","id":110,"result":{"token":"2bSpjzG8lTSHaqihGQCgrldypyFAsyme"}}
 ```
 
 ## Events
