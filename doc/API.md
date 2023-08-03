@@ -71,7 +71,8 @@ Declaration elements (fields):
 - `deprecated: boolean` (optional) - deprecated methods marked with `true`;
 - `method: function` - async/await or promise-returning function;
 - `returns: Schema` (optional) - returning value declarative schema;
-- `assert: function` (optional) - returning value imperative assertion function;
+- `tests: function` (test) - returning imperative test;
+- `cases: Array<TestCase>` - declarative tests (see ecample);
 - `examples: Array<object>` (optional) - array of examples;
 - `example: object` (optional) - single example (shorthand);
 - `errors: Array<object>` (optional) - collection of possible error;
@@ -97,11 +98,16 @@ Example method with a contract:
 
   returns: { type: 'number' },
 
-  assert: ({ a, b }, result) => {
-    if (result < a && result < b) {
-      throw new Error('Result expected to be greater than parameters');
-    }
+  tests: (test) => {
+    const res = this.method({ a: 3, b: 7 });
+    test.strictSame(res, 10);
+    test.end();
   },
+
+  cases: [
+    [{ a: 3, b: 7 }, 10],
+    [{ a: 10, b: 20 }, (result) => retult === 30],
+  ],
 });
 ```
 
