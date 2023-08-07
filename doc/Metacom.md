@@ -67,13 +67,45 @@ Example:
 
 ## Streams
 
-Stream initialization: `{"type":"stream","id":number,"name":string,"size":number}`
+Stream initialization:
+```js
+{
+  type: "stream",
+  dest: 'server' | 'client',
+  id: number,
+  name: string,
+  size: number,
+}
+```
 
-Stream chunk: `{"type":"stream","id": number}`; Next frame: `Buffer`.
+Stream chunk:
+```js
+{
+  type: "stream",
+  dest: 'server' | 'client',
+  id: number,
+} // Next frame: `Buffer`
+```
 
-Stream finalization: `{"type":"stream","id":number,"status":"end"}`
+Stream finalization:
+```js
+{
+  type: "stream",
+  dest: 'server' | 'client',
+  id: number,
+  status: "end",
+}
+```
 
-Stream termination:`{"type":"stream","id":number,"status":"terminate"}`
+Stream termination:
+```js
+{
+  type: "stream",
+  dest: 'server' | 'client',
+  id: number,
+  status: "terminate",
+}
+```
 
 ## Ping packets
 
