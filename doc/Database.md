@@ -49,7 +49,7 @@ Directory with database schema should contain following files:
 ## Entity definition `<EntityName>.js`
 
 Where `<EntityName>` is a name of certain Entity (Class) of subject domain.
-For example, `City.js` definition may looks like:
+For example, `City.js` definition may look like:
 ```js
 ({
   Registry: { realm: 'application', storage: 'append' },
@@ -66,13 +66,13 @@ For example, `City.js` definition may looks like:
 });
 ```
 
-Here is `Registry` is a metadata record. Other allowed kinkds:
+Here `Registry` is a metadata record. Other allowed kinds are:
 - `Dictionary` - lookup table, have own id for primary key;
 - `Registry` - registry, uses global identifier for primary key;
 - `Entity` - entity, has own id for primary key;
 - `Journal` - access logs and other logs, have own id for primary key);
 - `Details` - details for registry or entity table, have own id for primary key;
-- `Relation` - detailes attached to the intersection of multiple entities;
+- `Relation` - details attached to the intersection of multiple entities;
 - `View` - named query database allow to select from as from regular table;
 - `Struct` - structure (in-memory, API contract or db complex data type);
 - `Scalar` - scalar value;
