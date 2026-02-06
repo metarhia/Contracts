@@ -16,7 +16,7 @@ of [JSTP protocol](https://github.com/metarhia/jstp).
 
 ## Packet types
 
-There are following packet types: `call`, `callback`, `event`, `stream`, `ping`.
+There are following packet types: `call`, `callback`, `event`, `stream`, `domain`.
 
 ## Calls and callbacks
 
@@ -73,7 +73,7 @@ Stream initialization:
 ```js
 {
   type: "stream",
-  dest: 'server' | 'client',
+  dest: "server" | "client",
   id: string,
   name: string,
   size: number,
@@ -84,7 +84,7 @@ Stream chunk:
 ```js
 {
   type: "stream",
-  dest: 'server' | 'client',
+  dest: "server" | "client",
   id: string,
 } // Next frame: `Buffer`
 ```
@@ -109,8 +109,12 @@ Stream termination:
 }
 ```
 
-## Ping packets
+## Domain packets
 
-Client may periodically generate ping packets `{}` (empty objects, without
-fields and id) to test connection. Server should also answer with empty object
-`{}`.
+Domain packets will be executed in Business-logic Runner (for example Service Worker).
+
+Examples:
+```json
+{"type":"domain","id":"VrMsUTWIRNiAxJXqpe2ghg","method":"chat/sendMessage","args":{"from":"marcus","text":"Hello"}}
+{"type":"callback","id":"VrMsUTWIRNiAxJXqpe2ghg","result":{"success":"true"}}
+```
