@@ -66,8 +66,7 @@ Declaration elements (fields):
 - `queue: { concurrency: number, size: number, timeout: number }` (optional) -
   maximum number of concurrent requests, queue size, and timeout;
 - `sirializer: string` (optional, default: `json`) - serialization format;
-- `protocols: Array<string>` (optional, default: server default) - set `['http']`
-  to allow web hooks, (allowed values: `http`, `https`, `ws`, `wss`);
+- `protocols: Array<string>` (optional, default: server default) - allowed values: `http`, `https`, `ws`, `wss`;
 - `deprecated: boolean` (optional) - deprecated methods marked with `true`;
 - `method: function` - async/await or promise-returning function;
 - `returns: Schema` (optional) - returning value declarative schema;
